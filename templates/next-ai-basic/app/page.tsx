@@ -1,4 +1,5 @@
 import { Chat } from "@/components/chat";
+import { StructuredOutput } from "@/components/structured-output";
 
 export default function Home() {
   return (
@@ -51,8 +52,8 @@ export default function Home() {
             Structured Output
           </h2>
           <p className="mt-1 text-sm leading-6 text-neutral-600">
-            Use the included API route to turn a raw product idea into a typed
-            starter brief.
+            Enter a service idea and get a typed JSON product analysis from the
+            selected model.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
@@ -63,6 +64,7 @@ export default function Home() {
             {"{ idea: string }"}
           </code>
         </div>
+        <StructuredOutput />
       </section>
     </main>
   );

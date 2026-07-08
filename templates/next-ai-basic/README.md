@@ -28,4 +28,4 @@ Use `OPENAI_MODEL` or `GEMINI_MODEL` to change the model without editing code.
 ## API Routes
 
 - `POST /api/chat`: basic text response endpoint for the chat UI.
-- `POST /api/structured`: example structured output endpoint.
+- `POST /api/structured`: returns a typed JSON product analysis from `{ idea: string }`.
