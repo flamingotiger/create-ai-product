@@ -31,9 +31,9 @@ GEMINI_MODEL=gemini-1.5-flash
 ## Run Locally
 
 ```bash
-pnpm install
+npm install
 cp .env.example .env.local
-pnpm dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
@@ -116,8 +116,8 @@ The route uses `zod` and `generateObject()` to produce typed JSON.
 - Set production environment variables in your hosting provider.
 - Keep only the provider keys you actually use.
 - Confirm `AI_PROVIDER` matches the key and model you configured.
-- Run `pnpm typecheck`.
-- Run `pnpm build`.
+- Run `npm run typecheck`.
+- Run `npm run build`.
 - Review API error messages before exposing the app publicly.
 
 ## Stack

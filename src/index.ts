@@ -34,7 +34,7 @@ async function createProject(projectName: string) {
   const targetDir = path.resolve(process.cwd(), projectName);
 
   if (await fs.pathExists(targetDir)) {
-    console.error(chalk.red(`Error: ${projectName} already exists.`));
+    console.error(chalk.red(`Error: target directory already exists: ${targetDir}`));
     process.exit(1);
   }
 

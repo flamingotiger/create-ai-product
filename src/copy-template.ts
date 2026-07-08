@@ -41,6 +41,10 @@ export async function copyTemplate({
   targetDir,
   templateDir
 }: CopyTemplateOptions) {
+  if (!(await fs.pathExists(templateDir))) {
+    throw new Error(`Template directory was not found: ${templateDir}`);
+  }
+
   await fs.copy(templateDir, targetDir);
   await updatePackageName(targetDir, projectName);
   await replacePlaceholders(targetDir, provider);

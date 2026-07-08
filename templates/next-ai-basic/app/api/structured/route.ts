@@ -45,9 +45,7 @@ Return a practical, concise product analysis for a founder who wants to build a 
     return Response.json(result.object);
   } catch (error) {
     const message =
-      error instanceof Error
-        ? error.message
-        : "Failed to generate structured output.";
+      error instanceof Error ? error.message : "Failed to generate structured output.";
 
     return Response.json({ error: message }, { status: 500 });
   }

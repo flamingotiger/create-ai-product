@@ -14,8 +14,8 @@ export default function Home() {
               Start a focused AI product.
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-neutral-600">
-              A minimal App Router template with provider switching, one chat
-              endpoint, one structured output endpoint, and room for shadcn/ui.
+              A minimal App Router template with provider switching, one chat endpoint,
+              one structured output endpoint, and room for shadcn/ui.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -34,7 +34,9 @@ export default function Home() {
           </div>
           <div className="rounded-md border border-neutral-200 bg-white p-4 text-sm text-neutral-600 shadow-sm">
             <p className="font-medium text-neutral-950">Included</p>
-            <p className="mt-2">Next.js, Tailwind CSS, Vercel AI SDK, OpenAI, Gemini.</p>
+            <p className="mt-2">
+              Next.js, Tailwind CSS, Vercel AI SDK, OpenAI, Gemini.
+            </p>
           </div>
         </div>
       </header>
@@ -48,12 +50,10 @@ export default function Home() {
         id="structured-output"
       >
         <div>
-          <h2 className="text-lg font-semibold text-neutral-950">
-            Structured Output
-          </h2>
+          <h2 className="text-lg font-semibold text-neutral-950">Structured Output</h2>
           <p className="mt-1 text-sm leading-6 text-neutral-600">
-            Enter a service idea and get a typed JSON product analysis from the
-            selected model.
+            Enter a service idea and get a typed JSON product analysis from the selected
+            model.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

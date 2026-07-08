@@ -17,6 +17,5 @@ export function getModel() {
     })(env.GEMINI_MODEL);
   }
 
-  const exhaustiveCheck: never = env.AI_PROVIDER;
-  return exhaustiveCheck;
+  throw new Error("Unsupported AI provider.");
 }

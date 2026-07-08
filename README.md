@@ -58,6 +58,8 @@ To work locally:
 
 ```bash
 pnpm install
+pnpm run typecheck
+pnpm run lint
 pnpm run build
 node dist/index.js my-app
 ```

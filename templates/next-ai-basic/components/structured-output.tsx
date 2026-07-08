@@ -92,10 +92,7 @@ export function StructuredOutput() {
           <div className="grid gap-3 md:grid-cols-2">
             <ResultList title="Target users" values={analysis.targetUsers} />
             <ResultList title="Core features" values={analysis.coreFeatures} />
-            <ResultList
-              title="Monetization"
-              values={analysis.monetizationIdeas}
-            />
+            <ResultList title="Monetization" values={analysis.monetizationIdeas} />
             <div className="rounded-md border border-neutral-200 bg-white p-3">
               <p className="text-sm font-medium text-neutral-950">Difficulty</p>
               <p className="mt-2 text-sm capitalize text-neutral-700">
@@ -113,13 +110,7 @@ export function StructuredOutput() {
   );
 }
 
-function ResultList({
-  title,
-  values
-}: {
-  title: string;
-  values: string[];
-}) {
+function ResultList({ title, values }: { title: string; values: string[] }) {
   return (
     <div className="rounded-md border border-neutral-200 bg-white p-3">
       <p className="text-sm font-medium text-neutral-950">{title}</p>
