@@ -1,6 +1,6 @@
 import { generateObject } from "ai";
 import { z } from "zod";
-import { getLanguageModel } from "@/lib/ai/provider";
+import { getModel } from "@/lib/ai/provider";
 
 export const runtime = "nodejs";
 
@@ -18,8 +18,10 @@ export async function POST(request: Request) {
     return Response.json({ error: "Idea is required." }, { status: 400 });
   }
 
+  const model = getModel();
+
   const result = await generateObject({
-    model: getLanguageModel(),
+    model,
     schema: ideaSchema,
     prompt: `Turn this raw AI product idea into a compact starter brief: ${idea}`
   });

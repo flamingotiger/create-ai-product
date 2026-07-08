@@ -1,5 +1,5 @@
 import { generateText } from "ai";
-import { getLanguageModel } from "@/lib/ai/provider";
+import { getModel } from "@/lib/ai/provider";
 
 export const runtime = "nodejs";
 
@@ -10,8 +10,10 @@ export async function POST(request: Request) {
     return Response.json({ error: "Message is required." }, { status: 400 });
   }
 
+  const model = getModel();
+
   const result = await generateText({
-    model: getLanguageModel(),
+    model,
     system:
       "You are a concise product copilot helping a founder shape an AI product.",
     prompt: message

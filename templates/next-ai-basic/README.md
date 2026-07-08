@@ -23,6 +23,7 @@ pnpm dev
 ```
 
 Set `AI_PROVIDER` to `openai` or `gemini`, then provide the matching API key.
+Use `OPENAI_MODEL` or `GEMINI_MODEL` to change the model without editing code.
 
 ## API Routes
 

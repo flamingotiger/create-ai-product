@@ -1,12 +1,22 @@
-import { google } from "@ai-sdk/google";
-import { openai } from "@ai-sdk/openai";
-import { env } from "@/lib/env";
-import { DEFAULT_GEMINI_MODEL, DEFAULT_OPENAI_MODEL } from "./models";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { createOpenAI } from "@ai-sdk/openai";
+import { getEnv } from "@/lib/env";
 
-export function getLanguageModel() {
-  if (env.AI_PROVIDER === "gemini") {
-    return google(DEFAULT_GEMINI_MODEL);
+export function getModel() {
+  const env = getEnv();
+
+  if (env.AI_PROVIDER === "openai") {
+    return createOpenAI({
+      apiKey: env.OPENAI_API_KEY
+    })(env.OPENAI_MODEL);
   }
 
-  return openai(DEFAULT_OPENAI_MODEL);
+  if (env.AI_PROVIDER === "gemini") {
+    return createGoogleGenerativeAI({
+      apiKey: env.GEMINI_API_KEY
+    })(env.GEMINI_MODEL);
+  }
+
+  const exhaustiveCheck: never = env.AI_PROVIDER;
+  return exhaustiveCheck;
 }
