@@ -6,13 +6,12 @@ import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs-extra";
 import prompts from "prompts";
-
-type AiProvider = "openai" | "gemini";
+import { copyTemplate, type AiProvider } from "./copy-template.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const packageRoot = path.resolve(__dirname, "..");
-const templateDir = path.join(packageRoot, "templates", "next-placeholder");
+const templateDir = path.join(packageRoot, "templates", "next-ai-basic");
 
 const program = new Command();
 
@@ -65,8 +64,12 @@ async function createProject(projectName: string) {
     process.exit(0);
   }
 
-  await fs.copy(templateDir, targetDir);
-  await personalizeTemplate(targetDir, projectName, provider);
+  await copyTemplate({
+    projectName,
+    provider,
+    targetDir,
+    templateDir
+  });
 
   console.log();
   console.log(chalk.green(`Created ${projectName} successfully.`));
@@ -76,25 +79,4 @@ async function createProject(projectName: string) {
   console.log("  npm install");
   console.log("  cp .env.example .env.local");
   console.log("  npm run dev");
-}
-
-async function personalizeTemplate(
-  targetDir: string,
-  projectName: string,
-  provider: AiProvider
-) {
-  const packageJsonPath = path.join(targetDir, "package.json");
-  const envExamplePath = path.join(targetDir, ".env.example");
-
-  const packageJson = await fs.readJson(packageJsonPath);
-  packageJson.name = projectName;
-  await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
-
-  const providerKey =
-    provider === "openai" ? "OPENAI_API_KEY" : "GEMINI_API_KEY";
-
-  await fs.writeFile(
-    envExamplePath,
-    `AI_PROVIDER=${provider}\n${providerKey}=your_api_key_here\n`
-  );
 }
